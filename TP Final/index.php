@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< Updated upstream
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
@@ -18,13 +19,27 @@
                     <p>'.$_GET['mensaje'].'</p></div>';
             }
         ?>
+=======
+>>>>>>> Stashed changes
 
-        <form action="login.php" method="post">
-            <input name="usuario" class="form-control form-control-lg" placeholder="Usuario"><br>
-            <input name="clave" type="text" class="form-control form-control-lg" placeholder="Contraseña"><br>
-            <input type="submit" value="Ingresar" class="btn btn-primary">
-        </form><br>
-        <p><a href="create.php">Crear nuevo usuario</a></p>
-      </div> 
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Pizarra de Anuncios</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body class="container">
+    <div class="jumbotron text-center">
+        <h1>Pizarra de Anuncios</h1>
+    </div>
+    <div class="text-center">
+        <h3>Anuncios publicados</h3>
+
+
+
+        <p><a href="linkLogin.php">Login del personal</a></p>
+    </div>
+</body>
+
 </html>
