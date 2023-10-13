@@ -4,9 +4,8 @@ require_once 'clases/RepositorioAnuncios.php';
 require_once 'clases/ControladorSesion.php';
 
 $controlador = new ControladorSesion();
-$anuncios = $controlador->obtenerAnuncios();
 
-$anuncios = [];
+// Verificar si se ha enviado un filtro de vigencia
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["vigencia"])) {
     $vigenciaSeleccionada = $_POST["vigencia"];
     if ($vigenciaSeleccionada === "all") {
@@ -18,13 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["vigencia"])) {
     $anuncios = $controlador->obtenerAnuncios();
 }
 
-$orden = "";
+// Verificar si se ha solicitado un orden específico
 if (isset($_POST["ordenar_reciente"])) {
-    $orden = "reciente";
+    $anuncios = $controlador->obtenerAnuncios("reciente");
 } elseif (isset($_POST["ordenar_antiguo"])) {
-    $orden = "antiguo";
+    $anuncios = $controlador->obtenerAnuncios("antiguo");
 }
-$anuncios = $controlador->obtenerAnuncios($orden);
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +64,14 @@ $anuncios = $controlador->obtenerAnuncios($orden);
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
+<div class="text-center">
+    <h3>Filtros:</h3>
+    <form action="index.php" method="post">
+        <input type="submit" name="ordenar_reciente" value="Ordenar por fecha reciente" class="btn btn-secondary">
+        <input type="submit" name="ordenar_antiguo" value="Ordenar por fecha antigua" class="btn btn-secondary">
+    </form>
+    <br>
     <form method="post" action="">
     <label for="vigencia">Filtrar por vigencia:</label>
     <select name="vigencia">
@@ -76,15 +82,6 @@ $anuncios = $controlador->obtenerAnuncios($orden);
     <input type="submit" value="Filtrar">
 </form>
 </div>
-<div class="text-center">
-    <h3>Filtros:</h3>
-    <form action="index.php" method="post">
-        <input type="submit" name="ordenar_reciente" value="Ordenar por fecha reciente" class="btn btn-secondary">
-        <input type="submit" name="ordenar_antiguo" value="Ordenar por fecha antigua" class="btn btn-secondary">
-    </form>
-    <br>
-</div>
-
 </body>
 
 </html>
