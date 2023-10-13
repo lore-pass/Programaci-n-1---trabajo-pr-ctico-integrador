@@ -2,6 +2,8 @@
 
 require_once 'clases/RepositorioUsuario.php';
 require_once 'clases/Usuario.php';
+require_once 'clases/RepositorioAnuncios.php';
+require_once 'Anuncio.php';
 
 class ControladorSesion
 {
@@ -11,7 +13,7 @@ class ControladorSesion
      * @param string $nombre_usuario El nombre de usuario
      * @param string $clave          La contraseña del usuario
      *
-     * @return Array El primer valor del array es true o false, según si el
+     * @return array El primer valor del array es true o false, según si el
      *               login fue exitoso o no. El segundo elemento del array es
      *               un mensaje que explica el motivo del éxito o fracaso.
      */
@@ -46,7 +48,7 @@ class ControladorSesion
      * @param string $apellido       El apellido del usuario/a
      * @param string $clave          La contraseña del usuario
      *
-     * @return Array Un array cuyo primer valor es true o false, según si fue
+     * @return array Un array cuyo primer valor es true o false, según si fue
      *               exitosa o no la creación del usuario. El segundo valor del
      *               array retornado es un mensaje explicativo.
      */
@@ -69,7 +71,7 @@ class ControladorSesion
     /**
      * Elimina el usuario. Retorna true si tuvo éxito, false si no.
      *
-     * @params Usuario $usuario El objeto usuario a eliminar.
+     * @param Usuario $usuario El objeto usuario a eliminar.
      *
      * @return boolean true si tuvo éxito, false de lo contrario
      */
@@ -113,6 +115,55 @@ class ControladorSesion
             return false;
         }
     }
+
+    public function obtenerAnuncios() {
+        $repositorioAnuncios = new RepositorioAnuncios();
+        return $repositorioAnuncios->leer();
+    }
+    
+    function guardarAnuncio(Anuncio $anuncio) {
+        $ra = new RepositorioAnuncios();
+        $ra->guardar($anuncio);
+    }
+
+
+    function modificarAnuncio(Anuncio $anuncio) {
+
+    }
+
+    function eliminarAnuncio(Anuncio $anuncio) {
+    
+    }
+
+    /**
+     * Crea un nuevo usuario y le solicita al repositorio que lo guarde en la
+     * BD. Si el RepositorioUsuario responde exitosamente, loguea al usuario
+     * en la sesión.
+     *
+     * @param string $nombre_usuario El nombre de usuario
+     * @param string $nombre         El nombre real de la persona usuaria
+     * @param string $apellido       El apellido del usuario/a
+     * @param string $clave          La contraseña del usuario
+     *
+     * @return array Un array cuyo primer valor es true o false, según si fue
+     *               exitosa o no la creación del usuario. El segundo valor del
+     *               array retornado es un mensaje explicativo.
+     */
+    // function create($nombre_usuario, $nombre, $apellido, $clave)
+    // {
+    //     $repo = new RepositorioUsuario();
+    //     $usuario = new Usuario($nombre_usuario, $nombre, $apellido);
+    //     $id = $repo->save($usuario, $clave);
+    //     if ($id === false) {
+    //         // No se pudo guardar
+    //         return [ false, "Error al crear el usuario" ];
+    //     } else {
+    //         $usuario->setId($id);
+    //         session_start();
+    //         $_SESSION['usuario'] = serialize($usuario);
+    //         return [ true, "Usuario creado correctamente" ];
+    //     }
+    // }
 
 }
 
