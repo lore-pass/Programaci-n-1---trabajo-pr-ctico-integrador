@@ -22,11 +22,34 @@ if (isset($_SESSION['usuario'])) {
     </head>
     <body class="container">
       <div class="jumbotron text-center">
-      <h1>Pizarra de Anuncios - Centro de Control</h1>
+      <h1>Pizarra de Anuncios - Nuevo anuncio</h1>
+      <div>
+      <a href="central_anuncios.php">Volver a la página anterior</a><br>
+<a href="index.php">Ir al índice de anuncios</a>
+      </div>
       </div>
       <div class="text-center">
         <h3>Subir nuevo anuncio</h3>
+        <?php
+            if (isset($_GET['mensaje'])) {
+                echo '<div id="mensaje" class="alert alert-primary text-center">
+                    <p>'.$_GET['mensaje'].'</p></div>';
+            }
+        ?>
+
         <form action="subir.php" method="post">
+            <input name="titulo" class="form-control form-control-lg" placeholder="Título"><br>
+            <input name="descripcion" class="form-control form-control-lg" placeholder="Descripción"><br>
+            <input name="anio" type="number" class="form-control form-control-lg" placeholder="Año"><br>
+            <input name="comision" type="number" class="form-control form-control-lg" placeholder="Comisión"><br>
+            <input type="submit" value="Subir anuncio" class="btn btn-primary">
+        </form>
+      </div>
+    </body>
+</html>
+
+
+<!-- <form action="subir.php" method="post">
             <label for="titulo">Título</label>
             <input name="titulo" class="form-control form-control-lg"><br>
             <label for="titulo">Descripción</label>
@@ -46,7 +69,4 @@ if (isset($_SESSION['usuario'])) {
             <label for="fecha">Fecha</label>
             <input type="date" name="fecha" class="form-control form-control-lg" value=""><br>
             <input type="submit" value="Subir anuncio" class="btn btn-primary">
-        </form>
-      </div>
-    </body>
-</html>
+        </form> -->
