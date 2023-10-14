@@ -75,7 +75,7 @@ class RepositorioUsuario
     public function save(Usuario $usuario, $clave)
     {
         $q = "INSERT INTO usuarios (nombre_usuario, clave, nombre, apellido) ";
-        $q.= "VALUES (?, ? , ? , ?)";
+        $q .= "VALUES (?, ? , ? , ?)";
         $query = self::$conexion->prepare($q);
 
         $nombre_usuario = $usuario->nombre_usuario;
@@ -85,7 +85,7 @@ class RepositorioUsuario
 
         $query->bind_param("ssss", $nombre_usuario, $clave, $nombre, $apellido);
 
-        if ($query->execute())  {
+        if ($query->execute()) {
             return self::$conexion->insert_id;
         } else {
             return false;
@@ -95,7 +95,7 @@ class RepositorioUsuario
     /**
      * Elimina el usuario de la BD. Retorna true si tuvo éxito, false si no.
      *
-     * @params Usuario $usuario El objeto usuario a eliminar de la BD.
+     * @param Usuario $usuario El objeto usuario a eliminar de la BD.
      *
      * @return boolean true si tuvo éxito, false de lo contrario
      */
@@ -135,7 +135,7 @@ class RepositorioUsuario
         Usuario $usuario
     ) {
         $q = "UPDATE usuarios SET nombre_usuario = ?, nombre = ?, apellido = ? ";
-        $q.= " WHERE id = ?;";
+        $q .= " WHERE id = ?;";
 
         $query = self::$conexion->prepare($q);
 
@@ -144,6 +144,17 @@ class RepositorioUsuario
         $query->bind_param("sssd", $nombre_usuario, $nombre, $apellido, $id);
 
         return $query->execute();
+    }
+
+    public function obtenerTodosLosUsuariosId()
+    {
+        $usuarios_id = [];
+        $sql = "SELECT id FROM usuarios";
+        $resultado = self::$conexion->query($sql);
+        while ($fila = $resultado->fetch_assoc()) {
+            $usuarios_id[] = $fila['id'];
+        }
+        return $usuarios_id;
     }
 
 }

@@ -2,6 +2,9 @@
 
 require_once 'clases/RepositorioUsuario.php';
 require_once 'clases/Usuario.php';
+require_once 'clases/RepositorioAnuncios.php';
+require_once 'clases/RepositorioComisiones.php';
+require_once 'clases/Anuncio.php';
 
 class ControladorSesion
 {
@@ -11,7 +14,7 @@ class ControladorSesion
      * @param string $nombre_usuario El nombre de usuario
      * @param string $clave          La contraseña del usuario
      *
-     * @return Array El primer valor del array es true o false, según si el
+     * @return array El primer valor del array es true o false, según si el
      *               login fue exitoso o no. El segundo elemento del array es
      *               un mensaje que explica el motivo del éxito o fracaso.
      */
@@ -22,7 +25,7 @@ class ControladorSesion
 
         if ($usuario === false) {
             // Falló el login
-            return [ false, "Error de credenciales" ];
+            return [false, "Error de credenciales"];
         } else {
             // Login correcto, $usuario tiene un objeto de tipo Usuario, cuyos
             // datos obtuvo de la BD.
@@ -46,7 +49,7 @@ class ControladorSesion
      * @param string $apellido       El apellido del usuario/a
      * @param string $clave          La contraseña del usuario
      *
-     * @return Array Un array cuyo primer valor es true o false, según si fue
+     * @return array Un array cuyo primer valor es true o false, según si fue
      *               exitosa o no la creación del usuario. El segundo valor del
      *               array retornado es un mensaje explicativo.
      */
@@ -57,19 +60,19 @@ class ControladorSesion
         $id = $repo->save($usuario, $clave);
         if ($id === false) {
             // No se pudo guardar
-            return [ false, "Error al crear el usuario" ];
+            return [false, "Error al crear el usuario"];
         } else {
             $usuario->setId($id);
             session_start();
             $_SESSION['usuario'] = serialize($usuario);
-            return [ true, "Usuario creado correctamente" ];
+            return [true, "Usuario creado correctamente"];
         }
     }
 
     /**
      * Elimina el usuario. Retorna true si tuvo éxito, false si no.
      *
-     * @params Usuario $usuario El objeto usuario a eliminar.
+     * @param Usuario $usuario El objeto usuario a eliminar.
      *
      * @return boolean true si tuvo éxito, false de lo contrario
      */
@@ -113,6 +116,54 @@ class ControladorSesion
             return false;
         }
     }
+    private $repositorioAnuncios;
+    private $repositorioComisiones;
 
+    private $repositorioUsuario;
+    public function __construct()
+    {
+        $this->repositorioAnuncios = new RepositorioAnuncios();
+        $this->repositorioComisiones = new RepositorioComisiones();
+        $this->repositorioUsuario = new RepositorioUsuario();
+    }
+
+    public function obtenerAnuncios($orden = "")
+    {
+        if ($orden === "reciente") {
+            return $this->repositorioAnuncios->leer();
+        } elseif ($orden === "antiguo") {
+            return $this->repositorioAnuncios->leerOrdenadoPorFechaAntigua();
+        }
+        return $this->repositorioAnuncios->leer();
+    }
+
+    public function obtenerAnunciosPorVigencia($vigencia)
+    {
+        return $this->repositorioAnuncios->leerPorVigencia($vigencia);
+    }
+
+    public function guardarAnuncio(Anuncio $anuncio)
+    {
+        $this->repositorioAnuncios->guardar($anuncio);
+    }
+
+    public function actualizarVigenciaAnuncio($id_anuncio, $vigencia)
+    {
+        $this->repositorioAnuncios->actualizarVigencia($id_anuncio, $vigencia);
+        $_SESSION['mensaje'] = "Vigencia del anuncio actualizada con éxito.";
+    }
+
+    public function eliminarAnuncioPorId($id_anuncio)
+    {
+        $this->repositorioAnuncios->eliminarPorId($id_anuncio);
+    }
+    public function obtenerComisiones()
+    {
+        return $this->repositorioComisiones->obtenerTodas();
+    }
+
+    public function obtenerTodosLosUsuariosId()
+    {
+        return $this->repositorioUsuario->obtenerTodosLosUsuariosId();
+    }
 }
-
