@@ -11,42 +11,71 @@ if (isset($_SESSION['usuario'])) {
     // Si no, redirigimos al login
     header('Location: index.php');
 }
+$controlador = new ControladorSesion();
+$comisiones = $controlador->obtenerComisiones();
+$usuarios_id = $controlador->obtenerTodosLosUsuariosId();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["subir_anuncio"])) {
+    $titulo = $_POST["titulo"];
+    $texto = $_POST["texto"];
+    $usuario_id = $_POST['usuario_id'];
+    $comision_id = $_POST["comision"];
+
+    $anuncio = new Anuncio($titulo, $texto, null, $usuario_id, [$comision_id]);
+    $controlador->guardarAnuncio($anuncio);
+    $_SESSION['mensaje'] = "Anuncio subido con éxito.";
+    header("Location: subir_anuncio.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Pizarra de Anuncios</title>
-        <link rel="stylesheet" href="bootstrap.min.css">
-    </head>
-    <body class="container">
-      <div class="jumbotron text-center">
-      <h1>Pizarra de Anuncios - Centro de Control</h1>
-      </div>
-      <div class="text-center">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Pizarra de Anuncios</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body class="container">
+    <div class="jumbotron text-center">
+        <h1>Pizarra de Anuncios - Nuevo anuncio</h1>
+        <div>
+            <a href="central_anuncios.php">Volver a la página anterior</a><br>
+            <a href="index.php">Ir al índice de anuncios</a>
+        </div>
+    </div>
+    <div class="text-center">
         <h3>Subir nuevo anuncio</h3>
-        <form action="subir.php" method="post">
-            <label for="titulo">Título</label>
-            <input name="titulo" class="form-control form-control-lg"><br>
-            <label for="titulo">Descripción</label>
-            <input name="descripcion" class="form-control form-control-lg"><br>
-            <label for="año">Año</label>
-            <select name="años" class="form-control form-control-lg">
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3">3</option>
-            </select><br>   
-            <label for="comision">Comisión</label>
-            <select name="comisiones" class="form-control form-control-lg">
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3">3</option>
+        <?php
+        if (isset($_SESSION['mensaje'])) {
+            echo "<p class='mensaje-exito'>" . $_SESSION['mensaje'] . "</p>";
+            unset($_SESSION['mensaje']); // Elimina el mensaje de la sesión después de mostrarlo
+        }
+        ?>
+        <form action="subir_anuncio.php" method="post">
+            <input name="titulo" class="form-control form-control-lg" placeholder="Título" required><br>
+            <input name="texto" class="form-control form-control-lg" placeholder="Descripción" required><br>
+            <label for="usuario_id">ID del Usuario:</label>
+            <select name="usuario_id" id="usuario_id" required>
+                <?php
+                foreach ($usuarios_id as $id) {
+                    echo "<option value='" . $id . "'>" . $id . "</option>";
+                }
+                ?>
+            </select>
+            <label for="comision">Comisión y Año:</label>
+            <select name="comision">
+                <?php
+                foreach ($comisiones as $comision) {
+                    echo "<option value='" . $comision["id"] . "'>" . $comision["id"] . "</option>";
+                }
+                ?>
             </select><br>
-            <label for="fecha">Fecha</label>
-            <input type="date" name="fecha" class="form-control form-control-lg" value=""><br>
-            <input type="submit" value="Subir anuncio" class="btn btn-primary">
+            <input type="submit" name="subir_anuncio" value="Subir Anuncio">
         </form>
-      </div>
-    </body>
+    </div>
+</body>
+
 </html>
