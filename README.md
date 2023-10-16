@@ -1,5 +1,5 @@
 ## Pizarra de Anuncios - Programación II
-Este proyecto es una pizarra de anuncios, donde los usuarios pueden leer anuncios relacionados al Terciario Urquiza, además de que el personal correspondiente del Terciario puede ingresar al sitio y subir, editar y eliminar anuncios. Se ha desarrollado como parte del trabajo práctico integrador para la materia Programación II, de Desarrollo de Software, 2° Año 2da Comisión.
+Este proyecto es una pizarra de anuncios, donde los usuarios pueden leer anuncios relacionados al Terciario Urquiza, además de que el personal correspondiente del Terciario puede ingresar al sitio y subir, editar y eliminar anuncios. Se ha desarrollado como parte del trabajo práctico integrador del 2° cuatrimestre para la materia Programación II, de Desarrollo de Software, 2° Año 2da Comisión.
 
 ## Integrantes del Grupo
 - Tomás Roma
