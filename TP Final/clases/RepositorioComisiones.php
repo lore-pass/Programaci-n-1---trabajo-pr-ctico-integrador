@@ -18,7 +18,8 @@ class RepositorioComisiones
         }
     }
 
-    public function obtenerTodas() {
+    public function obtenerTodas()
+    {
         $comisiones = [];
         $sql = "SELECT id FROM comisiones";
         $resultado = $this->conexion->query($sql);
@@ -28,5 +29,5 @@ class RepositorioComisiones
         return $comisiones;
     }
 
-    
+
 }

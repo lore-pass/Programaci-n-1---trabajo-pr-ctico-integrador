@@ -5,7 +5,8 @@ require_once 'clases/ControladorSesion.php';
 
 $controlador = new ControladorSesion();
 $totalAnuncios = $controlador->obtenerTotalAnuncios();
-
+$totalVigentes = $controlador->obtenerTotalAnunciosVigentes();
+$totalNoVigentes = $controlador->obtenerTotalAnunciosNoVigentes();
 
 // Verifica si se ha enviado un filtro de vigencia
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["vigencia"])) {
@@ -41,11 +42,13 @@ if (isset($_POST["ordenar_reciente"])) {
 
 <body class="container">
     <div class="jumbotron text-center">
-        <h1>Pizarra de Anuncios</h1>
+        <h1>PIZARRA DE ANUNCIOS</h1><br>
         <p><a href="linkLogin.php">Login Personal</a></p>
     </div>
     <div class="text-center">
-        <h3>ANUNCIOS PUBLICADOS</h3>
+        <span>
+            <h3>ANUNCIOS PUBLICADOS</h3>
+        </span>
         <table border="1">
             <thead>
                 <tr>
@@ -82,10 +85,19 @@ if (isset($_POST["ordenar_reciente"])) {
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <p>Total de anuncios publicados:
-            <?= $totalAnuncios ?>
-        </p>
-    </div><br>
+        <div class="total-info">
+            <p>Total de anuncios publicados: <span>
+                    <?= $totalAnuncios ?>
+                </span></p>
+            <p>Total de anuncios vigentes: <span>
+                    <?= $totalVigentes ?>
+                </span></p>
+            <p style="
+    margin-bottom: 0px">Total de anuncios no vigentes: <span>
+                    <?= $totalNoVigentes ?>
+                </span></p>
+        </div>
+    </div>
     <div class="text-center">
         <form action="index.php" method="post">
             <input type="submit" name="ordenar_reciente" value="Ordenar por fecha reciente" class="btn btn-secondary">

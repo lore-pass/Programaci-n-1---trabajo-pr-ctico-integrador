@@ -167,7 +167,21 @@ class ControladorSesion
         return $this->repositorioUsuario->obtenerTodosLosUsuariosId();
     }
 
-    public function obtenerTotalAnuncios() {
+    public function obtenerTotalAnuncios()
+    {
         return $this->repositorioAnuncios->obtenerTotalAnuncios();
     }
+
+    public function obtenerTotalAnunciosVigentes()
+    {
+        $repo = new RepositorioAnuncios();
+        return $repo->contarAnunciosVigentes();
+    }
+
+    public function obtenerTotalAnunciosNoVigentes()
+    {
+        $repo = new RepositorioAnuncios();
+        return $repo->contarAnunciosNoVigentes();
+    }
+
 }

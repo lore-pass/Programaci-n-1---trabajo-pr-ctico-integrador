@@ -1,4 +1,8 @@
-body, h1, h2, h3, p {
+body,
+h1,
+h2,
+h3,
+p {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -7,6 +11,23 @@ body, h1, h2, h3, p {
 body {
     background-color: #f4f4f4;
     padding: 20px;
+}
+
+/* Estilo para el enlace "Login Personal" */
+.jumbotron p a {
+    background-color: #007BFF;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto al pasar el mouse sobre el enlace */
+.jumbotron p a:hover {
+    background-color: #0056b3;
+    text-decoration: none;
 }
 
 /* Estilo para la tabla "Anuncios Publicados" */
@@ -18,9 +39,11 @@ table {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-table th, table td {
+table th,
+table td {
     padding: 10px 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #2C3E50;
+    color: #2C3E50;
 }
 
 table th {
@@ -42,22 +65,18 @@ h3 {
     text-align: center;
     font-size: 2.5em;
     margin-bottom: 20px;
-    color: #2C3E50;
+    color: #2C3E50 !important;
     padding: 10px 0;
-    background-color: #EAEDED;
+    background-color: #ffffff !important;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
-h3:hover {
-    background-color: #D5D8DC;
-}
-
 /* Estilos para los botones y el select */
-.btn, select {
+.btn,
+select {
     margin: 5px 10px;
     padding: 10px 15px;
     border: none;
@@ -67,9 +86,11 @@ h3:hover {
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.btn:hover, select:hover {
+.btn:hover,
+select:hover {
     background-color: #0056b3;
 }
 
@@ -82,8 +103,45 @@ label {
 /* Estilo para el botón de filtrar */
 input[type="submit"] {
     background-color: #28a745;
+    color: #ffffff !important;
 }
 
 input[type="submit"]:hover {
     background-color: #218838;
+}
+
+/* Estilo para los totales */
+.total-info {
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #5DADE2, #007BFF);
+    color: #ffffff;
+}
+
+.total-info span {
+    font-weight: bold;
+    color: rgb(247, 254, 115);
+}
+
+/* Estilo para el contenedor del título "Pizarra de Anuncios" */
+.jumbotron {
+    background: linear-gradient(45deg, #5DADE2, #007BFF);
+    border-radius: 0;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 40px 0;
+}
+
+/* Estilo para el título "Pizarra de Anuncios" */
+.jumbotron h1 {
+    font-size: 3em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    transition: transform 0.3s;
+}
+
+.jumbotron h1:hover {
+    transform: scale(1.05);
 }

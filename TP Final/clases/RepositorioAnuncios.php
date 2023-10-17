@@ -134,7 +134,8 @@ class RepositorioAnuncios
         $stmt->close();
     }
 
-    public function obtenerTotalAnuncios() {
+    public function obtenerTotalAnuncios()
+    {
         $sql = "SELECT COUNT(*) as total FROM anuncios";
         $result = $this->conexion->query($sql);
         if ($result->num_rows > 0) {
@@ -143,5 +144,22 @@ class RepositorioAnuncios
         }
         return 0;
     }
-    
+
+    public function contarAnunciosVigentes()
+    {
+        $sql = "SELECT COUNT(*) as total FROM anuncios WHERE vigente = 1";
+        $result = $this->conexion->query($sql);
+        $row = $result->fetch_assoc();
+        return $row['total'];
+    }
+
+    public function contarAnunciosNoVigentes()
+    {
+        $sql = "SELECT COUNT(*) as total FROM anuncios WHERE vigente = 0";
+        $result = $this->conexion->query($sql);
+        $row = $result->fetch_assoc();
+        return $row['total'];
+    }
+
+
 }
