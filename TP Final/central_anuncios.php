@@ -19,13 +19,12 @@ if (isset($_SESSION['usuario'])) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Pizarra de Anuncios</title>
-  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap.min (1).css">
 </head>
 
 <body class="container">
   <div class="jumbotron text-center">
     <h1>Pizarra de Anuncios - Central de Anuncios</h1>
-    <a href="home.php">Volver a la página anterior</a><br>
   </div>
   <div class="text-center">
     <h3>Elige la siguiente acción:</h3>
@@ -44,6 +43,7 @@ if (isset($_SESSION['usuario'])) {
     <form action="index.php" method="post">
       <input type="submit" value="Mostrar anuncios" class="btn btn-primary">
     </form><br>
+    <a href="home.php">Volver a la página anterior</a><br>
   </div>
 </body>
 

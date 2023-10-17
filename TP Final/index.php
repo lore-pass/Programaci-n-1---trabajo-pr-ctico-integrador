@@ -36,7 +36,7 @@ if (isset($_POST["ordenar_reciente"])) {
     <title>Pizarra de Anuncios</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min (1).css">
 </head>
 
 <body class="container">
@@ -45,7 +45,7 @@ if (isset($_POST["ordenar_reciente"])) {
         <p><a href="linkLogin.php">Login Personal</a></p>
     </div>
     <div class="text-center">
-        <h3>Anuncios publicados</h3>
+        <h3>ANUNCIOS PUBLICADOS</h3>
         <table border="1">
             <thead>
                 <tr>

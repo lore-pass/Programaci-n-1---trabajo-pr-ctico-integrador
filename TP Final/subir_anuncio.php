@@ -35,16 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["subir_anuncio"])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Pizarra de Anuncios</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min (1).css">
 </head>
 
 <body class="container">
     <div class="jumbotron text-center">
-        <h1>Pizarra de Anuncios - Nuevo anuncio</h1>
-        <div>
-            <a href="central_anuncios.php">Volver a la página anterior</a><br>
-            <a href="index.php">Ir al índice de anuncios</a>
-        </div>
+        <h1>Pizarra de Anuncios</h1>
     </div>
     <div class="text-center">
         <h3>Subir nuevo anuncio</h3>
@@ -72,9 +68,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["subir_anuncio"])) {
                     echo "<option value='" . $comision["id"] . "'>" . $comision["id"] . "</option>";
                 }
                 ?>
-            </select><br>
+            </select><br><br>
             <input type="submit" name="subir_anuncio" value="Subir Anuncio">
-        </form>
+        </form><br>
+        <a href="central_anuncios.php">Volver a la página anterior</a><br>
+        <a href="index.php">Ir al índice de anuncios</a>
     </div>
 </body>
 

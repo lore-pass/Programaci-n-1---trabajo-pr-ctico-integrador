@@ -32,16 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar_anuncio"])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Pizarra de Anuncios</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min (1).css">
 </head>
 
 <body class="container">
     <div class="jumbotron text-center">
-        <h1>Pizarra de Anuncios - Eliminar anuncio</h1>
-        <div>
-            <a href="central_anuncios.php">Volver a la página anterior</a><br>
-            <a href="index.php">Ir al índice de anuncios</a>
-        </div>
+        <h1>Pizarra de Anuncios</h1>
     </div>
     <div class="text-center">
         <h3>Eliminar anuncio</h3>
@@ -61,9 +57,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar_anuncio"])) {
                 <?php } ?>
             </select>
             <br>
+            <br>
             <input type="submit" name="eliminar_anuncio" value="Eliminar Anuncio">
-        </form>
-
+        </form><br>
+        <a href="central_anuncios.php">Volver a la página anterior</a><br>
+        <a href="index.php">Ir al índice de anuncios</a>
     </div>
 </body>
 

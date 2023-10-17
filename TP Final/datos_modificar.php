@@ -19,12 +19,12 @@ if (isset($_SESSION['usuario'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Bienvenido al sistema</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min (1).css">
 </head>
 
 <body class="container">
     <div class="jumbotron text-center">
-        <h1>Sistema bancario</h1>
+        <h1>Pizarra de Anuncios</h1>
     </div>
     <div class="text-center">
         <h3>Modificar datos de usuario</h3>

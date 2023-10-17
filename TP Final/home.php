@@ -19,15 +19,15 @@ if (isset($_SESSION['usuario'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Pizarra de Anuncios</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min (1).css">
 </head>
 
 <body class="container">
     <div class="jumbotron text-center">
-        <h1>Bienvenido a Pizarra de Anuncios</h1>
+        <h1>Pizarra de Anuncios</h1>
     </div>
     <div class="text-center">
-        <h3>Hola
+        <h3>Bienvenido
             <?php echo $nomApe; ?>
         </h3>
 

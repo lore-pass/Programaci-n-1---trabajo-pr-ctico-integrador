@@ -5,13 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Pizarra de Anuncios</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min (1).css">
 </head>
 
 <body class="container">
     <div class="jumbotron text-center">
         <h1>Pizarra de Anuncios</h1>
-        <a href="index.php">Volver a la página anterior</a><br>
     </div>
     <div class="text-center">
         <h3>Login Personal</h3>
@@ -27,6 +26,7 @@
             <input type="submit" value="Ingresar" class="btn btn-primary">
         </form><br>
         <p><a href="create.php">Crear nuevo usuario</a></p>
+        <a href="index.php">Volver a la página anterior</a>
     </div>
 </body>
 

@@ -31,16 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["actualizar_vigencia"])
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Pizarra de Anuncios</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min (1).css">
 </head>
 
 <body class="container">
     <div class="jumbotron text-center">
-        <h1>Pizarra de Anuncios - Modificar anuncio</h1>
-        <div>
-            <a href="central_anuncios.php">Volver a la página anterior</a><br>
-            <a href="index.php">Ir al índice de anuncios</a>
-        </div>
+        <h1>Pizarra de Anuncios</h1>
     </div>
     <div class="text-center">
         <h3>Modificar anuncio</h3>
@@ -64,10 +60,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["actualizar_vigencia"])
             <select name="vigencia">
                 <option value="1">Vigente</option>
                 <option value="0">No vigente</option>
-            </select>
+            </select><br>
             <br>
             <input type="submit" name="actualizar_vigencia" value="Actualizar Vigencia">
-        </form>
+        </form><br>
+        <a href="central_anuncios.php">Volver a la página anterior</a><br>
+            <a href="index.php">Ir al índice de anuncios</a>
     </div>
 </body>
 
